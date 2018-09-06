@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ObligatorioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Employee" Abstract="true">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="ObligEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Employee" EntityType="ObligatorioModel.Employee" />
+  </EntityContainer>
+  <EntityType Name="PartTimeEmployee" BaseType="ObligatorioModel.Employee">
+    <Property Name="HourlyRate" Type="Double" />
+  </EntityType>
+  <EntityType Name="FullTimeEmployee" BaseType="ObligatorioModel.Employee">
+    <Property Name="Salary" Type="Int32" />
+  </EntityType>
+</Schema>
